@@ -32,7 +32,6 @@
         };
 
 
-        // Definir PropTypes para el componente Avatar
         const Avatar = ({ avatar }) => {
             return (
                 <div className="avatar">
@@ -57,7 +56,6 @@
             }).isRequired
         };
 
-        // Definir PropTypes para el componente Avatares
         const Avatares = ({ avatares }) => {
             return (
                 <section id="avatar-list">
@@ -93,7 +91,6 @@
         };
 
 
-        // Definir PropTypes para el componente Container
         const Container = ({ selectedComponent }) => {
             if (selectedComponent === 'Inicio') {
                 return <Inicio />;
@@ -125,7 +122,6 @@
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching data:', error);
-                    // Mostrar un mensaje de error en una ventana emergente
                     alert('Ocurrió un error al cargar los datos. Por favor, inténtalo de nuevo más tarde.');
                     setLoading(false);
                 }
