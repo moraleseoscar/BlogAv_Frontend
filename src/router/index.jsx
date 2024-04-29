@@ -2,29 +2,30 @@ import useToken from "@hooks/useToken";
 import useNavigate from "@hooks/useNavigate";
 
 import Navegacion from "@components/Navegacion";
+import Footer from "@components/Footer";
 
 import Login from "@pages/Login";
 import Logout from "@pages/Logout";
 import Home from "@pages/Home";
-import About from "@pages/About";
+import Nations from "@pages/Nations";
 import Dashboard from "@pages/Dashboard";
-import Reporte from "@pages/Reporte";
+import Posts from "@pages/Posts";
 
 const routes = {
   "/": {
     component: Home,
     requiresAuth: false,
   },
-  "/about": {
-    component: About,
+  "/nations": {
+    component: Nations,
     requiresAuth: false,
   },
   "/dashboard": {
     component: Dashboard,
     requiresAuth: true,
   },
-  "/report": {
-    component: Reporte,
+  "/posts": {
+    component: Posts,
     requiresAuth: true,
   },
   "/login": {
@@ -35,10 +36,6 @@ const routes = {
     component: Logout,
     requiresAuth: false,
   },
-  // '/register': {
-  //     component: Register,
-  //     requiresAuth: false
-  // },
 };
 
 function Router() {
@@ -67,6 +64,7 @@ function Router() {
           <CurrentPage />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

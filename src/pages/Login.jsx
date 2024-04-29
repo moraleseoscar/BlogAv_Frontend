@@ -5,13 +5,13 @@ import useToken from "@hooks/useToken";
 import useNavigate from "@hooks/useNavigate";
 
 import Input from "@components/Input";
-import Button from "@components/Button";
+import { Button } from "react-bootstrap";
 
 function Login() {
   const { setToken } = useToken();
   const { navigate } = useNavigate();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const processLogin = async () => {
     const response = await fetch("http://localhost:3000/login", {
@@ -28,7 +28,7 @@ function Login() {
     const { access_token } = await response.json();
 
     if (!response.ok) {
-      alert("Usuario inválido, intentalo nuevamente");
+      alert("Usuario inválido, inténtalo nuevamente");
       return;
     }
 
@@ -38,29 +38,33 @@ function Login() {
     navigate("/");
 
     window.location.replace("#/");
+  };
 
-    return;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    processLogin();
   };
 
   return (
     <div>
       <h1>Login</h1>
-
-      <Input
-        label="Usuario"
-        type="text"
-        value={username}
-        onChange={(value) => setUsername(value)}
-      />
-
-      <Input
-        label="Contraseña"
-        type="password"
-        value={password}
-        onChange={(value) => setPassword(value)}
-      />
-
-      <Button text="Ingresar" color="primary" onClick={processLogin} />
+      <form onSubmit={handleSubmit}>
+        <Input
+          label="Usuario"
+          type="text"
+          value={username}
+          onChange={(value) => setUsername(value)}
+        />
+        <Input
+          label="Contraseña"
+          type="password"
+          value={password}
+          onChange={(value) => setPassword(value)}
+        />
+        <Button type="submit" variant="primary">
+          Ingresar
+        </Button>
+      </form>
     </div>
   );
 }

@@ -32,16 +32,13 @@ function Navegacion() {
             <Nav.Link onClick={() => navigate("/")} href="#/">
               Inicio
             </Nav.Link>
-            <Nav.Link onClick={() => navigate("/about")} href="#/about">
-              Sobre nosotros
+            <Nav.Link onClick={() => navigate("/nations")} href="#/nations">
+              Naciones
             </Nav.Link>
             {isLoggedIn ? (
               <>
-                <Nav.Link onClick={() => navigate("/report")} href="#/report">
-                  Reporte
-                </Nav.Link>
-                <Nav.Link onClick={() => navigate("/logout")} href="#/logout">
-                  Salir
+                <Nav.Link onClick={() => navigate("/posts")} href="#/posts">
+                  Posts
                 </Nav.Link>
               </>
             ) : (
@@ -53,7 +50,15 @@ function Navegacion() {
           <Nav>
             {isLoggedIn ? (
               <>
-                <Navbar.Text>{decodedToken.username}</Navbar.Text>
+                {/* <Navbar.Text>{decodedToken.username}</Navbar.Text> */}
+                <NavDropdown title={decodedToken.username} id="user-registered">
+                  <NavDropdown.Item
+                    onClick={() => navigate("/logout")}
+                    href="#/logout"
+                  >
+                    Salir
+                  </NavDropdown.Item>
+                </NavDropdown>
               </>
             ) : (
               <></>
