@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Avatares from "@components/Avatares";
+import useNavigate from "@hooks/useNavigate";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { navigate } = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -36,6 +38,11 @@ function Posts() {
     );
   };
 
+  const handleEdit = (postId) => {
+    console.log("Editando post con ID:", postId);
+    navigate(`/newPost/${postId}`);
+  };
+
   return (
     <div>
       <header>
@@ -45,13 +52,14 @@ function Posts() {
         {loading ? (
           <p>Cargando...</p>
         ) : posts.length > 0 ? (
-          <Avatares avatares={posts} />
+          <Avatares avatares={posts} onEdit={handleEdit} />
         ) : posts.length === 0 ? (
           <EmptyState />
         ) : (
           <></>
         )}
       </div>
+      <br />
     </div>
   );
 }

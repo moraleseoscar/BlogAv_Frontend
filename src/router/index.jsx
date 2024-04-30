@@ -8,7 +8,7 @@ import Login from "@pages/Login";
 import Logout from "@pages/Logout";
 import Home from "@pages/Home";
 import Nations from "@pages/Nations";
-import Dashboard from "@pages/Dashboard";
+import NewPost from "@pages/NewPost";
 import Posts from "@pages/Posts";
 
 const routes = {
@@ -20,8 +20,8 @@ const routes = {
     component: Nations,
     requiresAuth: false,
   },
-  "/dashboard": {
-    component: Dashboard,
+  "/newPost": {
+    component: NewPost,
     requiresAuth: true,
   },
   "/posts": {
@@ -60,7 +60,7 @@ function Router() {
     <div>
       <Navegacion />
       <div className="container mt-3">
-        <div className="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div className="p-4 mb-4 bg-body-tertiary rounded-3">
           <CurrentPage />
         </div>
       </div>

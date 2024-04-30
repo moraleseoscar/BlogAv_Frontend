@@ -1,9 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
-
 header{
-    margin: auto -25px;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -12,14 +10,38 @@ section {
     margin-bottom: 30px;
 }
 
+.avatar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-avatar-btn {
+    margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+  }
+
 .avatar {
+    position: relative;
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
     margin: 20px auto;
+}
+  
+.avatar-actions {
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+}
 
+.avatar-actions button {
+    margin-left: 5px; 
+}
+
+.nations{
+    margin: 30px auto 60px;
 }
 
 .avatar-img {
@@ -36,11 +58,11 @@ section {
 
 .avatar-info {
     flex: 1;
-    padding: 20px;
+    padding: 10px;
 }
 
 footer {
-    background-color: #333;
+    background-color: #2b3035;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -49,13 +71,23 @@ footer {
     width: 100%;
 }
 
+.nation-image {
+    max-height: 279px; /* Define el tamaño mínimo de altura */
+  }
+
 @media only screen and (max-width: 990px) {
-
-
     h1 {
         font-size: 30px; 
-
     }
+
+    .avatar-header {
+        flex-direction: column;
+      }
+    
+      .add-avatar-btn {
+        margin-left: 0;
+        margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+      }
 
     .avatar {
         flex-direction: column;

@@ -14,7 +14,13 @@ function Navegacion() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar
+      bg="dark"
+      data-bs-theme="dark"
+      collapseOnSelect
+      expand="lg"
+      className="bg-body-tertiary"
+    >
       <Container>
         <Navbar.Brand onClick={() => navigate("/")} href="#/">
           <img
@@ -50,7 +56,6 @@ function Navegacion() {
           <Nav>
             {isLoggedIn ? (
               <>
-                {/* <Navbar.Text>{decodedToken.username}</Navbar.Text> */}
                 <NavDropdown title={decodedToken.username} id="user-registered">
                   <NavDropdown.Item
                     onClick={() => navigate("/logout")}

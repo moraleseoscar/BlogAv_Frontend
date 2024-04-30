@@ -1,33 +1,32 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from "react";
 
-const NavigationContext = createContext({ page: '/', navigate: () => { } })
+const NavigationContext = createContext({ page: "/", navigate: () => {} });
 
 const NavigationProvider = ({ children }) => {
-    const path = window.location.hash.substring(1)
+  const path = window.location.hash.substring(1);
 
-    const [page, setPage] = useState(path || '/')
+  const [page, setPage] = useState(path || "/");
 
-    useEffect(() => {
-        if (path) {
-            setPage(path)
-        }
-    }, [path])
-
-    const navigate = (url) => {
-        console.log('Pagina actual', url)
-        setPage(url)
+  useEffect(() => {
+    if (path) {
+      setPage(path);
     }
+  }, [path]);
 
-    return (
-        <NavigationContext.Provider value={{ page, navigate }}>
-            {children}
-        </NavigationContext.Provider>
-    )
-}
+  const navigate = (url) => {
+    setPage(url);
+  };
+
+  return (
+    <NavigationContext.Provider value={{ page, navigate }}>
+      {children}
+    </NavigationContext.Provider>
+  );
+};
 
 const useNavigate = () => {
-    return useContext(NavigationContext)
-}
+  return useContext(NavigationContext);
+};
 
-export default useNavigate
-export { NavigationProvider }
+export default useNavigate;
+export { NavigationProvider };
