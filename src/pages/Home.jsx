@@ -1,3 +1,5 @@
+import Image from "react-bootstrap/Image";
+
 function Home() {
   return (
     <div>
@@ -9,6 +11,13 @@ function Home() {
         este viaje épico.
       </p>
       <p>Y si no sabes quién es Wan, este blog es para ti.</p>
+      <Image
+        src="https://i.pinimg.com/originals/76/aa/a1/76aaa1c9342343330d84e146387a24e6.jpg"
+        fluid
+      />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

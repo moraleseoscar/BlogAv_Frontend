@@ -12,7 +12,7 @@ function Posts() {
 
   useEffect(() => {
     if (posts && posts.length > 0) {
-      const reversed = [...posts].reverse(); // Crear una copia invertida del array
+      const reversed = [...posts].reverse();
       setReversedPosts(reversed);
     }
   }, [posts]);
@@ -20,7 +20,7 @@ function Posts() {
   const handleEdit = (dataAvatar) => {
     withReactContent(Swal)
       .fire({
-        title: "Editar Avatar", // Título del formulario
+        title: "Editar Avatar",
         html: `
         <label for="avatar-name" class="swal2-input-label">Nombre de avatar:</label>
         <input id="avatar-name" class="swal2-input" placeholder="Nombre de avatar" value="${dataAvatar.title}" />
@@ -35,7 +35,7 @@ function Posts() {
         <input id="avatar-nation" class="swal2-input" placeholder="Nación" value="${dataAvatar.element}" />
       `,
         focusConfirm: false,
-        showCancelButton: true, // Mostrar botón de cancelar
+        showCancelButton: true,
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar",
         preConfirm: () => {
@@ -100,7 +100,6 @@ function Posts() {
         }
 
         console.log("Avatar eliminado:", avatar);
-        navigate("/posts");
         window.location.reload();
       } catch (error) {
         console.error("Error al eliminar el avatar:", error);

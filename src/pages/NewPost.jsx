@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Input from "@components/Input";
 import { Button } from "react-bootstrap";
 import useNavigate from "@hooks/useNavigate";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function NewPost() {
   const [title, setTitle] = useState("");
@@ -37,8 +39,24 @@ function NewPost() {
       setContent("");
       setImageAvatar("");
       setElement("");
-      navigate("/posts");
 
+      let timerInterval;
+      Swal.fire({
+        title: "Post creado correctamente",
+        text: "Se ha publicado un nuevo post en su página.",
+        icon: "success",
+        timer: 5000,
+        timerProgressBar: true,
+        confirmButtonText: "Cerrar",
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      });
+      navigate("/posts");
       console.log("Publicación creada exitosamente");
     } catch (error) {
       console.error("Error:", error.message);
