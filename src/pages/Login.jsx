@@ -1,9 +1,6 @@
 import { useState } from "react";
-import CryptoJS from "crypto-js";
-
 import useToken from "@hooks/useToken";
 import useNavigate from "@hooks/useNavigate";
-
 import Input from "@components/Input";
 import { Button } from "react-bootstrap";
 

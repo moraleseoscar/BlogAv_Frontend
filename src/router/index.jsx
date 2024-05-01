@@ -28,6 +28,10 @@ const routes = {
     component: Posts,
     requiresAuth: true,
   },
+  "/newPost/:postId": {
+    component: NewPost,
+    requiresAuth: true,
+  },
   "/login": {
     component: Login,
     requiresAuth: false,
@@ -68,5 +72,4 @@ function Router() {
     </div>
   );
 }
-
 export default Router;

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types"; // Importa PropTypes
 
 const NavigationContext = createContext({ page: "/", navigate: () => {} });
 
@@ -22,6 +23,11 @@ const NavigationProvider = ({ children }) => {
       {children}
     </NavigationContext.Provider>
   );
+};
+
+// Agrega PropTypes para children
+NavigationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const useNavigate = () => {

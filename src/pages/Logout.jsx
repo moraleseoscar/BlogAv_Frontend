@@ -1,18 +1,19 @@
-import { useEffect } from 'react'
-import useNavigate from "@hooks/useNavigate"
+import { useEffect } from "react";
+import useNavigate from "@hooks/useNavigate";
 
-const Logout = () => {
-    const { navigate } = useNavigate()
+function Logout() {
+  const { navigate } = useNavigate();
 
-    useEffect(() => {
-        localStorage.clear()
+  useEffect(() => {
+    const handleLogout = async () => {
+      localStorage.removeItem("access_token");
+      navigate("/login");
+    };
 
-        setTimeout(() => {
-            navigate('/')
-        }, 1000)
-    }, [])
+    handleLogout();
+  }, [navigate]);
 
-    return <h1>Saliendo 👋🏽</h1>
+  return null;
 }
 
-export default Logout
+export default Logout;

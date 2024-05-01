@@ -5,12 +5,11 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 function Navegacion() {
   const { isLoggedIn, getRawToken } = useToken();
-  const { page, navigate } = useNavigate();
+  const { navigate } = useNavigate(); // Eliminamos la variable 'page' que no se está utilizando
 
   let decodedToken = {};
   if (isLoggedIn) {
     decodedToken = getRawToken();
-    console.log(decodedToken);
   }
 
   return (

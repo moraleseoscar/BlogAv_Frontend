@@ -16,9 +16,23 @@ section {
     align-items: center;
   }
   
-  .add-avatar-btn {
+.add-avatar-btn {
     margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+}
+
+.swal2-html-container label {
+    text-align: left;
+    display: block;
+    margin-bottom: 5px; /* Opcional: Agrega un poco de margen inferior para separar los elementos */
   }
+  
+.swal2-html-container input,
+.swal2-html-container textarea {
+    width: 100%; /* Opcional: Haz que los inputs y textareas ocupen todo el ancho disponible */
+    margin: auto 0px;
+    resize: none;
+}   
+  
 
 .avatar {
     position: relative;

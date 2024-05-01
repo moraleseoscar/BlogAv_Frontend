@@ -1,44 +1,56 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext } from "react";
+import PropTypes from "prop-types"; // Importa PropTypes
 
 function parseToken(token) {
-    const base64Url = token.split('.')[1]
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
-    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-    }).join(''))
+  const base64Url = token.split(".")[1];
+  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  const jsonPayload = decodeURIComponent(
+    window
+      .atob(base64)
+      .split("")
+      .map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join("")
+  );
 
-    return JSON.parse(jsonPayload)
+  return JSON.parse(jsonPayload);
 }
 
-const TokenContext = createContext({ token: '', useToken: () => { } })
+const TokenContext = createContext({ token: "", useToken: () => {} });
 
 const TokenProvider = ({ children }) => {
-    const [token, setToken] = useState(
-        localStorage.getItem('access_token') || null
-    )
+  const [token, setToken] = useState(
+    localStorage.getItem("access_token") || null
+  );
 
-    useEffect(() => {
-        if (token) {
-            localStorage.setItem('access_token', token)
-        }
-    }, [token])
-
-    const isLoggedIn = !!token
-
-    const getRawToken = () => {
-        return parseToken(token)
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("access_token", token);
     }
+  }, [token]);
 
-    return (
-        <TokenContext.Provider value={{ token, setToken, isLoggedIn, getRawToken }}>
-            {children}
-        </TokenContext.Provider>
-    )
-}
+  const isLoggedIn = !!token;
+
+  const getRawToken = () => {
+    return parseToken(token);
+  };
+
+  return (
+    <TokenContext.Provider value={{ token, setToken, isLoggedIn, getRawToken }}>
+      {children}
+    </TokenContext.Provider>
+  );
+};
+
+// Agrega PropTypes para children
+TokenProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const useToken = () => {
-    return useContext(TokenContext)
-}
+  return useContext(TokenContext);
+};
 
-export default useToken
-export { TokenContext, TokenProvider }
+export default useToken;
+export { TokenContext, TokenProvider };

@@ -6,7 +6,7 @@ function Nations() {
       <header>
         <h1>Naciones del mundo de Avatar</h1>
       </header>
-      <div class="nations">
+      <div className="nations">
         <Row xs={1} md={2} className="g-4">
           <Col>
             <Card>

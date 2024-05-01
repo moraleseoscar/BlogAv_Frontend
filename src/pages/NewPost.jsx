@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "@components/Input";
 import { Button } from "react-bootstrap";
 import useNavigate from "@hooks/useNavigate";
@@ -8,7 +8,7 @@ function NewPost() {
   const [content, setContent] = useState("");
   const [imageAvatar, setImageAvatar] = useState("");
   const [element, setElement] = useState("");
-  const { page, navigate } = useNavigate();
+  const { navigate } = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,8 +19,6 @@ function NewPost() {
       image: imageAvatar,
       element_avatar: element,
     };
-
-    console.log(formData);
 
     try {
       const response = await fetch("http://localhost:3000/posts", {
