@@ -109,6 +109,20 @@ function Posts() {
     }
   };
 
+  const handleView = (dataAvatar) => {
+    withReactContent(Swal).fire({
+      title: dataAvatar.title,
+      html: `
+      <img src="${dataAvatar.image_avatar}" alt="${dataAvatar.title}" />
+      <div style="margin-top: 10px;">
+        <p style="font-size: 14px;">Nación de ${dataAvatar.element}</p>
+        <p style="font-size: 16px;">${dataAvatar.content}</p>
+      </div>
+    `,
+      confirmButtonText: "Cerrar",
+    });
+  };
+
   const EmptyState = () => {
     return (
       <div>
@@ -130,6 +144,7 @@ function Posts() {
         ) : reversedPosts && reversedPosts.length > 0 ? (
           <Avatares
             avatares={reversedPosts}
+            onView={handleView}
             onDelete={handleDelete}
             onEdit={handleEdit}
             isAdmin={true}

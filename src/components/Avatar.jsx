@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
-function Avatar({ avatar, onDelete, onEdit, isAdmin }) {
+function Avatar({ avatar, onView, onDelete, onEdit, isAdmin }) {
+  const handleView = () => {
+    onView(avatar);
+  };
+
   const handleEdit = () => {
     onEdit(avatar);
   };
@@ -11,7 +15,7 @@ function Avatar({ avatar, onDelete, onEdit, isAdmin }) {
   };
 
   return (
-    <div className="avatar">
+    <div className="avatar" onClick={handleView}>
       <div className="avatar-img">
         <img src={avatar.image_avatar} alt="aang" />
       </div>

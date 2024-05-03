@@ -3,7 +3,7 @@ import Avatar from "./Avatar.jsx";
 import { Button } from "react-bootstrap";
 import useNavigate from "@hooks/useNavigate";
 
-function Avatares({ avatares, onDelete, onEdit, isAdmin }) {
+function Avatares({ avatares, onView, onDelete, onEdit, isAdmin }) {
   const { navigate } = useNavigate();
 
   const handleNavigateToNewPost = () => {
@@ -29,9 +29,10 @@ function Avatares({ avatares, onDelete, onEdit, isAdmin }) {
         <Avatar
           key={index}
           avatar={avatar}
+          onView={onView}
           onDelete={onDelete}
           onEdit={onEdit}
-          isAdmin={isAdmin} // Pasar el estado del rol del usuario a Avatar
+          isAdmin={isAdmin}
         />
       ))}
     </section>
@@ -40,9 +41,10 @@ function Avatares({ avatares, onDelete, onEdit, isAdmin }) {
 
 Avatares.propTypes = {
   avatares: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onView: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  isAdmin: PropTypes.bool.isRequired, // Propiedad booleana que indica si el usuario es administrador
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default Avatares;
